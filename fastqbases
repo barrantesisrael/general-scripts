@@ -1,0 +1,13 @@
+#!/bin/bash
+# fastqbases -- counts the number of bases on a FASTQ file
+# source https://www.biostars.org/p/78043/#130586
+# 2015 isradelacon@gmail.com
+
+# echo -n "total reads "
+# wc -l $1 | tr -s " " | tr " " \\t | cut -f2 | awk '{ounc += $1} END {printf ("%'"'"'d\n", ounc/4)}' | tail -n1
+# echo -n "total bases "
+# cat $1 | paste - - - - | cut -f2 | wc -c | awk '{printf ("%'"'"'d\n", $1)}'
+
+# update 2015-06-11
+echo -n "total bases "
+cat $1 | paste - - - - | cut -f2 | tr -d '\n' | wc -c | awk '{printf ("%'"'"'d\n", $1)}'

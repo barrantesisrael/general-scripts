@@ -1,0 +1,24 @@
+#!/bin/bash
+# automated download from the GBF FTP servers
+# 2015-04-29 isradelacon@gmail.com
+
+# old login
+# USER=HZIUser
+# PASSWD=JxVDctCsee
+# cd HZIUser/Project_HZI_MINP
+
+# update 2015-05-11
+HOST=genome.gbf.de
+USER=minp-user
+PASSWD=N67fuoagua
+
+ftp -n -v $HOST << EOT
+ascii
+user $USER $PASSWD
+prompt
+cd HZI_MINP/minp-user
+ls -la
+mget *
+bye
+EOT
+
